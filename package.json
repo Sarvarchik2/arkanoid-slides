@@ -1,0 +1,17 @@
+{
+  "name": "arkanoid-slides",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "latest",
+    "@slidev/theme-seriph": "latest",
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.62.0"
+  }
+}

@@ -1,0 +1,195 @@
+<template>
+  <div class="mini-ark">
+    <canvas
+      ref="cv"
+      :width="W"
+      :height="H"
+      @click="toggle"
+    />
+    <div class="hud">
+      Score: {{ score }} ·
+      <span v-if="state === 'run'">Click to pause · mouse moves the paddle</span>
+      <span v-else-if="state === 'win'">You won! Click to play again</span>
+      <span v-else-if="state === 'lose'">Ball lost. Click to play again</span>
+      <span v-else>Click to start</span>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+const W = 480
+const H = 300
+const cv = ref(null)
+const score = ref(0)
+const state = ref('idle') // idle | run | pause | win | lose
+
+let ctx = null
+let raf = null
+const paddle = { w: 80, h: 10, x: (W - 80) / 2 }
+const ball = { x: W / 2, y: 200, vx: 3, vy: -3, r: 6 }
+let bricks = []
+
+function resetBricks() {
+  bricks = []
+  const cols = 8
+  const rows = 4
+  const bw = W / cols
+  const bh = 18
+  const colors = ['#ff5252', '#ffb142', '#2ed573', '#1e90ff']
+  for (let r = 0; r < rows; r += 1) {
+    for (let c = 0; c < cols; c += 1) {
+      bricks.push({ x: c * bw + 2, y: 30 + r * bh, w: bw - 4, h: bh - 3, color: colors[r] })
+    }
+  }
+}
+
+function reset() {
+  score.value = 0
+  ball.x = W / 2
+  ball.y = 200
+  ball.vx = 3
+  ball.vy = -3
+  resetBricks()
+}
+
+function step() {
+  ball.x += ball.vx
+  ball.y += ball.vy
+
+  if (ball.x < ball.r) {
+    ball.x = ball.r
+    ball.vx = Math.abs(ball.vx)
+  } else if (ball.x > W - ball.r) {
+    ball.x = W - ball.r
+    ball.vx = -Math.abs(ball.vx)
+  }
+  if (ball.y < ball.r) {
+    ball.y = ball.r
+    ball.vy = Math.abs(ball.vy)
+  }
+
+  const py = H - 24
+  if (
+    ball.vy > 0 &&
+    ball.y + ball.r >= py &&
+    ball.y < py + paddle.h &&
+    ball.x > paddle.x - ball.r &&
+    ball.x < paddle.x + paddle.w + ball.r
+  ) {
+    ball.vy = -Math.abs(ball.vy)
+    ball.vx = ((ball.x - (paddle.x + paddle.w / 2)) / (paddle.w / 2)) * 4
+    if (Math.abs(ball.vx) < 0.8) ball.vx = ball.vx >= 0 ? 0.8 : -0.8
+  }
+
+  if (ball.y > H + 30) state.value = 'lose'
+
+  for (let i = bricks.length - 1; i >= 0; i -= 1) {
+    const b = bricks[i]
+    if (
+      ball.x > b.x - ball.r &&
+      ball.x < b.x + b.w + ball.r &&
+      ball.y > b.y - ball.r &&
+      ball.y < b.y + b.h + ball.r
+    ) {
+      bricks.splice(i, 1)
+      ball.vy *= -1
+      score.value += 10
+      break
+    }
+  }
+
+  if (!bricks.length) state.value = 'win'
+}
+
+function draw() {
+  ctx.fillStyle = '#0b0b12'
+  ctx.fillRect(0, 0, W, H)
+
+  for (const b of bricks) {
+    ctx.fillStyle = b.color
+    ctx.fillRect(b.x, b.y, b.w, b.h)
+  }
+
+  ctx.fillStyle = '#00e5ff'
+  if (ctx.roundRect) {
+    ctx.beginPath()
+    ctx.roundRect(paddle.x, H - 24, paddle.w, paddle.h, 5)
+    ctx.fill()
+  } else {
+    ctx.fillRect(paddle.x, H - 24, paddle.w, paddle.h)
+  }
+
+  ctx.fillStyle = '#ffffff'
+  ctx.beginPath()
+  ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2)
+  ctx.fill()
+
+  if (state.value !== 'run') {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.55)'
+    ctx.fillRect(0, 0, W, H)
+    ctx.fillStyle = '#ffffff'
+    ctx.font = 'bold 22px sans-serif'
+    ctx.textAlign = 'center'
+    const msg = {
+      idle: 'Click to start',
+      pause: 'Paused',
+      win: 'You won! 🎉',
+      lose: 'Ball lost 😅',
+    }[state.value]
+    ctx.fillText(msg, W / 2, H / 2)
+  }
+}
+
+function loop() {
+  if (state.value === 'run') step()
+  draw()
+  raf = requestAnimationFrame(loop)
+}
+
+function toggle() {
+  if (state.value === 'run') {
+    state.value = 'pause'
+  } else {
+    if (state.value === 'win' || state.value === 'lose') reset()
+    state.value = 'run'
+  }
+}
+
+function onMove(e) {
+  const rect = cv.value.getBoundingClientRect()
+  const x = ((e.clientX - rect.left) / rect.width) * W - paddle.w / 2
+  paddle.x = Math.min(Math.max(x, 0), W - paddle.w)
+}
+
+onMounted(() => {
+  ctx = cv.value.getContext('2d')
+  reset()
+  window.addEventListener('mousemove', onMove)
+  loop()
+})
+
+onBeforeUnmount(() => {
+  if (raf) cancelAnimationFrame(raf)
+  window.removeEventListener('mousemove', onMove)
+})
+</script>
+
+<style scoped>
+.mini-ark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.mini-ark canvas {
+  border: 2px solid #444;
+  border-radius: 8px;
+  cursor: crosshair;
+}
+.hud {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+</style>
