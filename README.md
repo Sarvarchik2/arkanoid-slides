@@ -3,6 +3,8 @@
 An interactive presentation about my Arkanoid game built with Python/pygame.
 Homework (Option 2: Interactive AI Presentation).
 
+**▶ View it live: https://sarvarchik2.github.io/arkanoid-slides/**
+
 ## Run
 
 ```bash
