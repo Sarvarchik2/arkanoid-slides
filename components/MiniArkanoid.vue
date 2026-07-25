@@ -30,6 +30,23 @@ let raf = null
 const paddle = { w: 80, h: 10, x: (W - 80) / 2 }
 const ball = { x: W / 2, y: 200, vx: 3, vy: -3, r: 6 }
 let bricks = []
+let trail = []
+let particles = []
+
+function spawnBurst(x, y, color) {
+  for (let i = 0; i < 8; i += 1) {
+    const angle = Math.random() * Math.PI * 2
+    const speed = 1 + Math.random() * 2.5
+    particles.push({
+      x,
+      y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 1,
+      life: 18 + Math.random() * 10,
+      color,
+    })
+  }
+}
 
 function resetBricks() {
   bricks = []
@@ -51,10 +68,24 @@ function reset() {
   ball.y = 200
   ball.vx = 3
   ball.vy = -3
+  trail = []
+  particles = []
   resetBricks()
 }
 
 function step() {
+  trail.push({ x: ball.x, y: ball.y })
+  if (trail.length > 7) trail.shift()
+
+  for (let i = particles.length - 1; i >= 0; i -= 1) {
+    const p = particles[i]
+    p.x += p.vx
+    p.y += p.vy
+    p.vy += 0.12
+    p.life -= 1
+    if (p.life <= 0) particles.splice(i, 1)
+  }
+
   ball.x += ball.vx
   ball.y += ball.vy
 
@@ -93,6 +124,7 @@ function step() {
       ball.y > b.y - ball.r &&
       ball.y < b.y + b.h + ball.r
     ) {
+      spawnBurst(b.x + b.w / 2, b.y + b.h / 2, b.color)
       bricks.splice(i, 1)
       ball.vy *= -1
       score.value += 10
@@ -104,13 +136,35 @@ function step() {
 }
 
 function draw() {
-  ctx.fillStyle = '#0b0b12'
+  ctx.fillStyle = '#0b1120'
   ctx.fillRect(0, 0, W, H)
 
+  // Ball trail (fading, like the real game's TRAIL_LENGTH feature)
+  for (let i = 0; i < trail.length; i += 1) {
+    const fade = (i + 1) / (trail.length + 1)
+    ctx.fillStyle = `rgba(255, 255, 255, ${0.28 * fade})`
+    ctx.beginPath()
+    ctx.arc(trail[i].x, trail[i].y, ball.r * (0.5 + fade * 0.5), 0, Math.PI * 2)
+    ctx.fill()
+  }
+
+  // Neon bricks
+  ctx.save()
+  ctx.shadowBlur = 8
   for (const b of bricks) {
+    ctx.shadowColor = b.color
     ctx.fillStyle = b.color
     ctx.fillRect(b.x, b.y, b.w, b.h)
   }
+  ctx.restore()
+
+  // Particle bursts (like the real game's particles.py)
+  for (const p of particles) {
+    ctx.globalAlpha = Math.max(p.life / 24, 0)
+    ctx.fillStyle = p.color
+    ctx.fillRect(p.x - 2, p.y - 2, 4, 4)
+  }
+  ctx.globalAlpha = 1
 
   ctx.fillStyle = '#00e5ff'
   if (ctx.roundRect) {
@@ -190,7 +244,9 @@ onBeforeUnmount(() => {
   cursor: crosshair;
 }
 .hud {
-  font-size: 0.9em;
-  opacity: 0.8;
+  font-family: 'VT323', monospace;
+  font-size: 1.15em;
+  letter-spacing: 0.06em;
+  color: rgba(0, 229, 255, 0.85);
 }
 </style>

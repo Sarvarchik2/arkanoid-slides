@@ -5,18 +5,34 @@ info: |
   ## ARKANOID in Python
   An interactive presentation about building a classic arcade game with pygame.
 class: text-center
+colorSchema: dark
 drawings:
   persist: false
 transition: slide-left
 mdc: true
+mermaid:
+  theme: dark
 hideInToc: true
 ---
 
-# 🕹 ARKANOID in Python
+# ARKANOID in Python
 
 ### How I built and extended a classic arcade game with pygame
 
-<div class="pt-12">
+<div class="brick-row" aria-hidden="true">
+  <span class="brick" style="--c:#ff5252"></span>
+  <span class="brick" style="--c:#ffa500"></span>
+  <span class="brick" style="--c:#ffe600"></span>
+  <span class="brick" style="--c:#22c55e"></span>
+  <span class="brick" style="--c:#00e5ff"></span>
+  <span class="brick" style="--c:#ff00ff"></span>
+</div>
+
+<div class="pt-3" aria-hidden="true">
+  <span class="bounce-ball"></span>
+</div>
+
+<div class="pt-6">
   <span class="blink">▶ PRESS SPACE TO START</span>
 </div>
 
@@ -268,6 +284,10 @@ layout: center
 # 🎮 Demo: play right inside the slide!
 
 <MiniArkanoid />
+
+<div class="pt-3">
+  <span class="blink">▶ INSERT COIN — CLICK TO PLAY</span>
+</div>
 
 <div class="text-sm opacity-60 pt-2">
   The same gameplay, rewritten in JavaScript + canvas for this presentation
