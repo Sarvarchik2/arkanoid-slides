@@ -25,7 +25,7 @@ hideInToc: true
 </div>
 
 <div class="abs-br m-6 text-sm opacity-50">
-  Sarvarchik · 2026
+  Behruz · 2026
 </div>
 
 ---
