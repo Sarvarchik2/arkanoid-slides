@@ -1,0 +1,13 @@
+import{$ as e,B as t,C as n,D as r,S as i,bt as a,v as o,vt as s,y as c}from"./modules/shiki-DCmFFc2l.js";import{n as l,t as u}from"./slidev/context-DtCo6AY7.js";import{t as d}from"./slidev/VClick-D79SYLtx.js";import{a as f}from"./modules/unplugin-icons-BHXe1GPK.js";import{t as p}from"./slidev/CodeBlockWrapper-CWi4IcNh.js";import{t as m}from"./slidev/default-DKpkgZXn.js";var h={__name:`slides.md__slidev_5`,setup(h){let{$slidev:g,$nav:_,$clicksContext:v,$clicks:y,$page:b,$renderContext:x,$frontmatter:S}=l();return v.setup(),(l,h)=>{let g=p,_=f,v=d;return t(),c(m,a(r(s(u)(s(S),4))),{default:e(()=>[h[5]||=o(`h1`,null,`Architecture: who is responsible for what`,-1),n(g,{title:``,ranges:[]},{default:e(()=>[...h[0]||=[o(`pre`,{class:`shiki shiki-themes vitesse-dark vitesse-light slidev-code`,style:{"--shiki-dark":`#dbd7caee`,"--shiki-light":`#393a34`,"--shiki-dark-bg":`#121212`,"--shiki-light-bg":`#ffffff`}},[o(`code`,{class:`language-text`},[o(`span`,{class:`line`},[o(`span`,null,`arkanoid_pygame/`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`├── main.py            ← entry point, screen switching`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`├── settings.py        ← ALL constants in one place`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`├── game/`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`│   ├── entities.py    ← Paddle, Ball, Brick, Bonus, LaserBullet`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`│   ├── level.py       ← level parser for .txt files`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`│   ├── particles.py   ← particle burst when a brick explodes`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`│   └── audio.py       ← sounds and music`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`├── screens/`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`│   ├── menu.py        ← main menu`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`│   ├── game_screen.py ← all the gameplay logic`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`│   └── ...            ← settings, win, game over`)]),i(`
+`),o(`span`,{class:`line`},[o(`span`,null,`└── levels/level1.txt  ← a level as plain text`)])])],-1)]]),_:1}),n(v,null,{default:e(()=>[n(_,{class:`ic ic-yellow`}),h[1]||=i(` The rule: `,-1),h[2]||=o(`strong`,null,`logic, settings and screens live separately`,-1),h[3]||=i(` —`,-1),h[4]||=o(`p`,null,[i(`any game value can be tweaked in a single file, `),o(`code`,null,`settings.py`),i(`.`)],-1)]),_:1})]),_:1},16)}}};export{h as default};
