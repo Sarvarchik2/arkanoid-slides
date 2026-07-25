@@ -170,6 +170,27 @@
   50% { opacity: 0.12; }
 }
 
+/* ---------- Inline SVG icons (Lucide) ---------- */
+
+.ic {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.14em;
+  color: var(--ark-cyan);
+  filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.35));
+}
+
+.ic-yellow {
+  color: var(--ark-yellow);
+  filter: drop-shadow(0 0 4px rgba(255, 230, 0, 0.35));
+}
+
+.ic-red {
+  color: var(--ark-red);
+  filter: drop-shadow(0 0 4px rgba(255, 82, 82, 0.35));
+}
+
 /* ---------- Power-up chips: real game palette ---------- */
 
 .chip {

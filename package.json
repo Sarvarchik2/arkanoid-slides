@@ -12,6 +12,7 @@
     "vue": "latest"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.119",
     "playwright-chromium": "^1.62.0"
   }
 }

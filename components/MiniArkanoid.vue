@@ -183,16 +183,19 @@ function draw() {
   if (state.value !== 'run') {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.55)'
     ctx.fillRect(0, 0, W, H)
-    ctx.fillStyle = '#ffffff'
-    ctx.font = 'bold 22px sans-serif'
+    ctx.fillStyle = '#00e5ff'
+    ctx.font = '28px "VT323", monospace'
     ctx.textAlign = 'center'
+    ctx.shadowColor = '#00e5ff'
+    ctx.shadowBlur = 12
     const msg = {
-      idle: 'Click to start',
-      pause: 'Paused',
-      win: 'You won! 🎉',
-      lose: 'Ball lost 😅',
+      idle: 'CLICK TO START',
+      pause: 'PAUSED',
+      win: 'YOU WON!',
+      lose: 'BALL LOST',
     }[state.value]
     ctx.fillText(msg, W / 2, H / 2)
+    ctx.shadowBlur = 0
   }
 }
 

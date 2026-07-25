@@ -48,14 +48,14 @@ hideInToc: true
 hideInToc: true
 ---
 
-# 📋 Contents
+# Contents
 
 <div class="text-left">
   <Toc columns="2" maxDepth="1" />
 </div>
 
 <div class="pt-8">
-  <Link to="11" class="nav-btn">🎮 Impatient? Jump straight to the demo</Link>
+  <Link to="11" class="nav-btn"><lucide-gamepad-2 class="ic" /> Impatient? Jump straight to the demo</Link>
 </div>
 
 ---
@@ -65,12 +65,12 @@ hideInToc: true
 <div class="grid grid-cols-2 gap-6 items-center">
 <div class="text-left">
 
-- 🐍 **Python 3.11** + **pygame 2.6.1**
-- 📦 ~870 lines of code
-- 🧱 Levels defined in plain text files
-- 🎁 7 kinds of power-ups
-- 🔊 Sound, particles, ball trail
-- 📂 Code on GitHub: <a href="https://github.com/Sarvarchik2/python-game" target="_blank">Sarvarchik2/python-game</a>
+- <lucide-code class="ic" /> **Python 3.11** + **pygame 2.6.1**
+- <lucide-package class="ic" /> ~870 lines of code
+- <lucide-file-text class="ic" /> Levels defined in plain text files
+- <lucide-gift class="ic" /> 7 kinds of power-ups
+- <lucide-volume-2 class="ic" /> Sound, particles, ball trail
+- <lucide-github class="ic" /> Code on GitHub: <a href="https://github.com/Sarvarchik2/python-game" target="_blank">Sarvarchik2/python-game</a>
 
 </div>
 <div>
@@ -84,13 +84,13 @@ hideInToc: true
 
 <v-clicks>
 
-- 🏓 **Paddle** — the player, moves with ← → arrow keys
-- ⚪ **Ball** — flies on its own, bounces off everything
-- 🧱 **Bricks** — take 1–2 hits, some are indestructible
-- 🎁 **Power-ups** — drop from destroyed bricks with a 30% chance
-- 🔫 **Laser** — shoots if you catch the L power-up
-- 📊 **HUD** — score and lives at the top of the screen
-- 🧊 **Boundaries** — walls built from indestructible bricks
+- <lucide-rectangle-horizontal class="ic" /> **Paddle** — the player, moves with ← → arrow keys
+- <lucide-circle class="ic" /> **Ball** — flies on its own, bounces off everything
+- <lucide-brick-wall class="ic" /> **Bricks** — take 1–2 hits, some are indestructible
+- <lucide-gift class="ic" /> **Power-ups** — drop from destroyed bricks with a 30% chance
+- <lucide-zap class="ic" /> **Laser** — shoots if you catch the L power-up
+- <lucide-gauge class="ic" /> **HUD** — score and lives at the top of the screen
+- <lucide-frame class="ic" /> **Boundaries** — walls built from indestructible bricks
 
 </v-clicks>
 
@@ -116,7 +116,7 @@ arkanoid_pygame/
 
 <v-click>
 
-💡 The rule: **logic, settings and screens live separately** —
+<lucide-lightbulb class="ic ic-yellow" /> The rule: **logic, settings and screens live separately** —
 any game value can be tweaked in a single file, `settings.py`.
 
 </v-click>
@@ -174,7 +174,7 @@ elif min_overlap == overlap_left and ball.vx > 0:
 
 <v-click>
 
-⚠️ Always check the **direction** of the velocity — otherwise the ball gets stuck inside the brick.
+<lucide-triangle-alert class="ic ic-yellow" /> Always check the **direction** of the velocity — otherwise the ball gets stuck inside the brick.
 
 </v-click>
 
@@ -214,7 +214,7 @@ for r, line in enumerate(lines):
 
 <v-click>
 
-💡 A new level = a new .txt file.
+<lucide-lightbulb class="ic ic-yellow" /> A new level = a new .txt file.
 Anyone can design levels, even without knowing Python!
 
 </v-click>
@@ -238,7 +238,7 @@ Anyone can design levels, even without knowing Python!
 
 <v-click>
 
-The last three are my homework 👇
+The last three are my homework <lucide-arrow-down class="ic" />
 
 </v-click>
 
@@ -264,16 +264,16 @@ def speed_down(self) -> None:
 
 **What this small feature taught me:**
 
-- ⚠️ the ball must **never stop** → a minimum speed limit
-- ⚠️ the sign of velocity = direction → change only the magnitude
-- ⚠️ the paddle must not "teleport" when shrinking → keep its center
+- <lucide-triangle-alert class="ic ic-yellow" /> the ball must **never stop** → a minimum speed limit
+- <lucide-triangle-alert class="ic ic-yellow" /> the sign of velocity = direction → change only the magnitude
+- <lucide-triangle-alert class="ic ic-yellow" /> the paddle must not "teleport" when shrinking → keep its center
 
 </div>
 </div>
 
 <v-click>
 
-🎯 The main lesson: even a "simple" feature drags edge cases along with it.
+<lucide-target class="ic ic-red" /> The main lesson: even a "simple" feature drags edge cases along with it.
 
 </v-click>
 
@@ -281,7 +281,7 @@ def speed_down(self) -> None:
 layout: center
 ---
 
-# 🎮 Demo: play right inside the slide!
+# <lucide-gamepad-2 class="ic" /> Demo: play right inside the slide!
 
 <MiniArkanoid />
 
@@ -299,12 +299,12 @@ layout: center
 
 <v-clicks>
 
-- 🎮 **The game loop** — how 60 frames per second become a game
-- 📐 **Collisions** — AABB overlaps, bounces, edge cases
-- 🏗 **Architecture** — separating settings, logic and rendering
-- 🗂 **Git** — branches, commits, working with someone else's repo
-- 🐍 **Deeper Python** — type hints, classes, modules and packages
-- 🤝 **Working with AI** — how to give it tasks and verify the results
+- <lucide-gamepad-2 class="ic" /> **The game loop** — how 60 frames per second become a game
+- <lucide-ruler class="ic" /> **Collisions** — AABB overlaps, bounces, edge cases
+- <lucide-hammer class="ic" /> **Architecture** — separating settings, logic and rendering
+- <lucide-git-branch class="ic" /> **Git** — branches, commits, working with someone else's repo
+- <lucide-code class="ic" /> **Deeper Python** — type hints, classes, modules and packages
+- <lucide-bot class="ic" /> **Working with AI** — how to give it tasks and verify the results
 
 </v-clicks>
 
@@ -315,7 +315,7 @@ layout: center
 <div class="grid grid-cols-3 gap-4 pt-8">
 <div class="p-4 rounded tool-card">
 
-### 🐍 Code
+### <lucide-code class="ic" /> Code
 
 - Python 3.11
 - pygame 2.6.1
@@ -324,7 +324,7 @@ layout: center
 </div>
 <div class="p-4 rounded tool-card">
 
-### 🔧 Process
+### <lucide-wrench class="ic" /> Process
 
 - Git + GitHub
 - venv
@@ -333,7 +333,7 @@ layout: center
 </div>
 <div class="p-4 rounded tool-card">
 
-### 🤖 AI
+### <lucide-bot class="ic" /> AI
 
 - Claude Code — helped with code and this presentation
 - Slidev — slides from markdown
@@ -344,7 +344,7 @@ layout: center
 <v-click>
 
 <div class="pt-8 opacity-80">
-Honestly: AI helped me understand and verify things, but I ran and tested every power-up myself 🙂
+Honestly: AI helped me understand and verify things, but I ran and tested every power-up myself.
 </div>
 
 </v-click>
@@ -355,14 +355,14 @@ class: text-center final-slide
 hideInToc: true
 ---
 
-# Thank you! 🎉
+# Thank you! <lucide-party-popper class="ic ic-yellow" />
 
 ### Questions?
 
 <div class="pt-8">
-  <a href="https://github.com/Sarvarchik2/python-game" target="_blank" class="nav-btn">📂 Game code on GitHub</a>
+  <a href="https://github.com/Sarvarchik2/python-game" target="_blank" class="nav-btn"><lucide-github class="ic" /> Game code on GitHub</a>
 </div>
 
 <div class="pt-6 opacity-50 text-sm">
-  Slides: Slidev · the mini-game on slide 11 is playable 😉
+  Slides: Slidev · the mini-game on slide 11 is playable
 </div>
