@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root {
+  --ark-bg: #0f172a;
+  --ark-cyan: #00e5ff;
+  --ark-magenta: #ff00ff;
+  --ark-yellow: #ffe600;
+  --ark-green: #22c55e;
+  --ark-red: #ff5252;
+}
+
+/* Dark slate background instead of plain black */
+.slidev-layout {
+  background: linear-gradient(160deg, #0f172a 0%, #131c33 60%, #0d1526 100%);
+  color: #e2e8f0;
+}
+
+/* Neon arcade headings */
+.slidev-layout h1 {
+  color: var(--ark-cyan);
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.45);
+}
+
+/* Pixel font only on the cover and closing slides (short titles) */
+.slidev-layout.cover h1,
+.final-slide h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 2.1rem;
+  line-height: 1.5;
+  color: var(--ark-cyan);
+  text-shadow:
+    0 0 6px rgba(0, 229, 255, 0.9),
+    0 0 24px rgba(0, 229, 255, 0.45),
+    3px 3px 0 rgba(255, 0, 255, 0.35);
+}
+
+.slidev-layout.cover h3 {
+  font-family: 'VT323', monospace;
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  color: #cbd5e1;
+}
+
+/* CRT scanlines on the cover slide — static, no motion */
+.slidev-layout.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.028) 0px,
+    rgba(255, 255, 255, 0.028) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+/* Arcade "insert coin" blink for the cover hint */
+.blink {
+  font-family: 'VT323', monospace;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  color: var(--ark-yellow);
+  animation: ark-blink 1.4s steps(2, jump-none) infinite;
+}
+
+@keyframes ark-blink {
+  50% { opacity: 0.15; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blink { animation: none; }
+}
+
+/* Real color chips for the power-up table (game palette, not emoji) */
+.chip {
+  display: inline-block;
+  width: 0.95em;
+  height: 0.95em;
+  border-radius: 3px;
+  background: var(--c);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--c) 65%, transparent);
+  vertical-align: -0.12em;
+}
+
+/* Interactive buttons: pointer, hover, smooth transition (150-300ms) */
+.nav-btn {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--ark-cyan) !important;
+  border-radius: 8px;
+  padding: 0.55rem 1.1rem;
+  text-decoration: none !important;
+  transition: background 200ms ease-out, box-shadow 200ms ease-out, transform 200ms ease-out;
+}
+
+.nav-btn:hover {
+  background: rgba(0, 229, 255, 0.22);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.nav-btn:focus-visible {
+  outline: 2px solid var(--ark-cyan);
+  outline-offset: 3px;
+}
+
+/* Table of contents: cyan links */
+.slidev-toc-item a,
+.slidev-layout a {
+  color: #7dd3fc;
+}
+
+.slidev-layout a:hover {
+  color: var(--ark-cyan);
+}
+
+/* kbd keys — arcade terminal look */
+.slidev-layout kbd {
+  font-family: 'VT323', monospace;
+  font-size: 1.05em;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  border-radius: 4px;
+  padding: 0.05em 0.45em;
+  color: var(--ark-cyan);
+}
+
+/* Cards on the Tools slide */
+.tool-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.tool-card:hover {
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.15);
+}

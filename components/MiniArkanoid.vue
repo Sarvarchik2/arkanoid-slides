@@ -184,8 +184,9 @@ onBeforeUnmount(() => {
   gap: 8px;
 }
 .mini-ark canvas {
-  border: 2px solid #444;
+  border: 2px solid rgba(0, 229, 255, 0.5);
   border-radius: 8px;
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.25);
   cursor: crosshair;
 }
 .hud {

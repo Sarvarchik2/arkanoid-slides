@@ -16,8 +16,12 @@ hideInToc: true
 
 ### How I built and extended a classic arcade game with pygame
 
-<div class="pt-12 opacity-70">
-  Press <kbd>space</kbd> or <kbd>→</kbd> to navigate
+<div class="pt-12">
+  <span class="blink">▶ PRESS SPACE TO START</span>
+</div>
+
+<div class="pt-4 opacity-60 text-sm">
+  Navigate with <kbd>space</kbd> or <kbd>→</kbd>
 </div>
 
 <div class="abs-br m-6 text-sm opacity-50">
@@ -35,7 +39,7 @@ hideInToc: true
 </div>
 
 <div class="pt-8">
-  <Link to="11" class="px-4 py-2 rounded bg-cyan-700 text-white">🎮 Impatient? Jump straight to the demo</Link>
+  <Link to="11" class="nav-btn">🎮 Impatient? Jump straight to the demo</Link>
 </div>
 
 ---
@@ -208,13 +212,13 @@ Anyone can design levels, even without knowing Python!
 
 | | Letter | Type | Effect |
 |---|---|---|---|
-| 🟩 | **E** | extend | paddle ×2 wider |
-| 🟪 | **M** | multiball | +1 ball |
-| 🟨 | **L** | laser | shoot with spacebar |
-| 🟦 | **1** | extra_life | +1 life |
-| 🟥 | **S** | shrink | narrower paddle — **mine** |
-| 🟧 | **+** | speed_up | faster ball — **mine** |
-| ⬜ | **−** | speed_down | slower ball — **mine** |
+| <span class="chip" style="--c:#00ff00"></span> | **E** | extend | paddle ×2 wider |
+| <span class="chip" style="--c:#ff00ff"></span> | **M** | multiball | +1 ball |
+| <span class="chip" style="--c:#ffff00"></span> | **L** | laser | shoot with spacebar |
+| <span class="chip" style="--c:#00ffff"></span> | **1** | extra_life | +1 life |
+| <span class="chip" style="--c:#ff0000"></span> | **S** | shrink | narrower paddle — **mine** |
+| <span class="chip" style="--c:#ffa500"></span> | **+** | speed_up | faster ball — **mine** |
+| <span class="chip" style="--c:#ffffff"></span> | **−** | speed_down | slower ball — **mine** |
 
 <v-click>
 
@@ -289,7 +293,7 @@ layout: center
 # Tools
 
 <div class="grid grid-cols-3 gap-4 pt-8">
-<div class="p-4 rounded bg-gray-500/10">
+<div class="p-4 rounded tool-card">
 
 ### 🐍 Code
 
@@ -298,7 +302,7 @@ layout: center
 - VS Code
 
 </div>
-<div class="p-4 rounded bg-gray-500/10">
+<div class="p-4 rounded tool-card">
 
 ### 🔧 Process
 
@@ -307,7 +311,7 @@ layout: center
 - ruff / pylint
 
 </div>
-<div class="p-4 rounded bg-gray-500/10">
+<div class="p-4 rounded tool-card">
 
 ### 🤖 AI
 
@@ -327,7 +331,7 @@ Honestly: AI helped me understand and verify things, but I ran and tested every 
 
 ---
 layout: center
-class: text-center
+class: text-center final-slide
 hideInToc: true
 ---
 
@@ -336,7 +340,7 @@ hideInToc: true
 ### Questions?
 
 <div class="pt-8">
-  <a href="https://github.com/Sarvarchik2/python-game" target="_blank" class="px-4 py-2 rounded bg-cyan-700 text-white">📂 Game code on GitHub</a>
+  <a href="https://github.com/Sarvarchik2/python-game" target="_blank" class="nav-btn">📂 Game code on GitHub</a>
 </div>
 
 <div class="pt-6 opacity-50 text-sm">
